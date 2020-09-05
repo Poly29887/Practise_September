@@ -3,19 +3,33 @@
 #include<math.h>
 int main()
 {
-	long bi,sum = 0,digit,count=0;
+	long bi_keep,bi, sum = 0, digit, count = 0;
 	printf("Input Binary Number : ");
 	scanf("%ld", &bi);
-	printf("The Binary Number : %ld", bi);
+	bi_keep = bi;
 	while (bi > 0)
 	{
 		digit = bi % 10;
 		if (digit == 1)
 		{
-			sum += pow(2,count);
+			sum += pow(2, count);
+		}
+		if (digit != 0 && digit != 1)
+		{
+			sum = -1;
+			break;
 		}
 		count++;
 		bi = bi / 10;
 	}
-	printf("\nThe equivalent Decimal Number : %ld\n", sum);
+	if (sum >= 0)
+	{
+		printf("The Binary Number : %ld", bi_keep);
+		printf("\nThe equivalent Decimal Number : %ld\n", sum);
+	}
+	else if (sum == -1)
+	{
+	    printf("\n!! It is not BINARY NUMBER !!\n");
+	}
+
 }
